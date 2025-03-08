@@ -1,13 +1,12 @@
 'use client'
-import { Button } from "@/components/ui/button";
-import { useState } from 'react';
+
+import Header from "@/components/Header";
 
 export default function Home() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
-    
+    <Header />
     </>
   );
 }
