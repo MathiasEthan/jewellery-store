@@ -7,8 +7,8 @@ export default function Home() {
 
   return (
     <>
-      <Button className="p-4 m-6" onClick={() => setCount(count + 1)}>Become Hot</Button>
-      <p className="p-4 m-6">Hotness: {count}</p>
+    
     </>
   );
 }
+
