@@ -103,3 +103,45 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* app/globals.css */
+/* If you need a global base font, you can set it here using one of the variables. 
+   For example:
+   body {
+     font-family: var(--font-mulish);
+   }
+*/
+/* Utility classes for each font */
+.font-philosopher {
+  font-family: var(--font-philosopher), sans-serif;
+}
+
+.font-mulish {
+  font-family: var(--font-mulish), sans-serif;
+}
+
+h1 {
+  font-family: var(--font-philosopher), sans-serif;
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+.shine-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: skewX(-20deg);
+}
+.shine-effect:hover::before {
+  animation: shine 0.75s ease-in-out;
+}
+@keyframes shine {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
