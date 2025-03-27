@@ -7,6 +7,7 @@ import Link from 'next/link'
 // Query to fetch all products
 const ALL_PRODUCTS_QUERY = defineQuery(`*[_type == "product"]{
   name, 
+  id,
   price, 
   description,
   type,
@@ -29,7 +30,6 @@ export default async function AllProducts() {
       )
     }
 
-    // Group products by type for better organization
     const groupedProducts = products.reduce((acc, product) => {
       const category = product.type || product.category || 'other'
       if (!acc[category]) {
@@ -48,6 +48,13 @@ export default async function AllProducts() {
             <h2 className="text-2xl font-philosopher text mb-6 capitalize">
               {category}s
             </h2>
+            <div className="flex mb-4">
+              <Link href={`/products/categories/${category.toLowerCase()}s`}>
+                <button className="bg-blue-900 hover:bg-blue-800 text py-2 px-4 rounded">
+                  View Collection
+                </button>
+              </Link>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {categoryProducts.map((product, index) => (
                 <div key={product.name || index} className="bg-[#030D24] rounded-lg overflow-hidden shadow-lg">
@@ -66,7 +73,7 @@ export default async function AllProducts() {
                     </div>
                   )}
                   <div className="p-4">
-                    <h3 className="text-xl font-philosopher text mb-2">
+                    <h3 className="text-xl font-philosopher text mb-2 text-white">
                       {product.name || "Unnamed Product"}
                     </h3>
                     <p className="text-gray-300 mb-3">
@@ -75,9 +82,9 @@ export default async function AllProducts() {
                     <p className="text-gray-400 text-sm mb-4">
                       {product.description || "No description available"}
                     </p>
-                    <Link href={`/products/${product.type || product.category || 'other'}`}>
+                    <Link href={`/products/${product.id || product.category || 'other'}`}>
                       <button className="bg-blue-900 hover:bg-blue-800 text py-2 px-4 rounded w-full">
-                        View Collection
+                        View Product
                       </button>
                     </Link>
                   </div>
