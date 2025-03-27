@@ -82,7 +82,7 @@ export default async function AllProducts() {
                     <p className="text-gray-400 text-sm mb-4">
                       {product.description || "No description available"}
                     </p>
-                    <Link href={`/products/${product.id || product.category || 'other'}`}>
+                    <Link href={`/products/items/${product.id || 'other'}`}>
                       <button className="bg-blue-900 hover:bg-blue-800 text py-2 px-4 rounded w-full">
                         View Product
                       </button>
