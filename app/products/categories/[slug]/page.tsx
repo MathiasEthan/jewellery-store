@@ -56,7 +56,7 @@ export default async function ProductCategoriesPage({
                 <h2 className="text-xl font-semibold">{product.name}</h2>
                 <p className="text-gray-700 mt-2 line-clamp-2">{product.description}</p>
                 <p className="text-lg font-bold text-green-700 mt-2">${product.price.toFixed(2)}</p>
-                <Link href={`/products/${product.id}`} className="mt-3 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                <Link href={`/products/items/${product.id}`} className="mt-3 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
                   View Details
                 </Link>
               </div>
