@@ -50,7 +50,7 @@ export default async function AllProducts() {
             </h2>
             <div className="flex mb-4">
               <Link href={`/products/categories/${category.toLowerCase()}s`}>
-                <button className="bg-blue-900 hover:bg-blue-800 text py-2 px-4 rounded">
+                <button className="bg-blue-900 hover:bg-blue-800 text-white py-2 px-4 rounded">
                   View Collection
                 </button>
               </Link>
