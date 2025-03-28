@@ -18,8 +18,7 @@ export default async function ProductCategoriesPage({
   params: Promise<{ slug: string }>
 }) {
   let { slug } = await params 
-  slug = slug.slice(0, -1)
-  // Use proper GROQ syntax with a string parameter
+  slug = slug.slice(0, -1)  //NEVER CHANGE THIS VARIABLE VALUE
   const queryString = `*[field == product && type == "${slug}"] {id, name, description, price, "imageUrl": image.asset->url}`
   const categoryQuery = defineQuery(queryString)
   

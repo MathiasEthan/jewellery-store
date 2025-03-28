@@ -3,6 +3,7 @@ import { defineQuery } from 'next-sanity'
 import { sanityFetch } from '@/app/sanity/live'
 import Image from 'next/image'
 import Link from 'next/link'
+import AddToCartButton from '../components/AddToCartButton'
 
 // Query to fetch all products
 const ALL_PRODUCTS_QUERY = defineQuery(`*[_type == "product"]{
@@ -83,10 +84,11 @@ export default async function AllProducts() {
                       {product.description || "No description available"}
                     </p>
                     <Link href={`/products/items/${product.id || 'other'}`}>
-                      <button className="bg-blue-900 hover:bg-blue-800 text py-2 px-4 rounded w-full">
+                      <button className="bg-blue-900 hover:bg-blue-800 text py-2 px-4 mb-4 rounded w-full">
                         View Product
                       </button>
                     </Link>
+                    <AddToCartButton productId={product.id} />
                   </div>
                 </div>
               ))}

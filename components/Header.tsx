@@ -6,6 +6,7 @@ import User from "@/public/images/whiteuser.png";
 import ShoppingBag from "@/public/images/shopping-bag-white.png";
 import Wishlist from "@/public/images/whiteheart.png"
 import Hamburg from "@/public/images/whitehamburger.png"
+import Link from "next/link";
 
 function Header() {
   return (
@@ -19,7 +20,9 @@ function Header() {
             <div className="flex space-x-4">
             <Image src={Wishlist} alt="Wishlist" height={20} width={20} />
             <Image src={User} alt="Account" height={20} width={20} />
-            <Image src={ShoppingBag} alt="Cart" height={20} width={20} />
+            <Link href="/cart">
+              <Image src={ShoppingBag} alt="Cart" height={20} width={20} />
+            </Link>
             </div>
 
         </div>

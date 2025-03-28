@@ -1,8 +1,11 @@
+
+
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { defineQuery } from 'next-sanity'
 import { sanityFetch } from '@/app/sanity/live'
 import Image from 'next/image'
+import AddToCartButton from '@/app/components/AddToCartButton'
 
 export default async function ProductDetailPage({params}: {params: {id: string}}) {
   const { id } = await params
@@ -10,12 +13,12 @@ export default async function ProductDetailPage({params}: {params: {id: string}}
   
   // Use proper GROQ syntax with a string parameter
   const queryString = `*[field == product && id =="${id}"] {name, description, price, "imageUrl": image.asset->url}`
-  console.log('Query:', queryString)
+  //console.log('Query:', queryString)
   
   const productQuery = defineQuery(queryString, {params: {id}})
   const product = await sanityFetch({query: productQuery})
   
-  console.log('Product data:', product.data[0].name)
+  //console.log('Product data:', product.data[0].name)
   
   return (
     <div>
@@ -45,13 +48,9 @@ export default async function ProductDetailPage({params}: {params: {id: string}}
             >
               Buy Now
             </Button>
-            <Button 
-              className="w-full border border-black text-white py-3 px-6 rounded-md hover:bg-gray-100 hover:text-black transition duration-300"
-            >
-              Add to Cart
-            </Button>
-          </div>
-        </div>
+
+            <AddToCartButton productId={id} />
+          </div>  </div>
           </div>
         ) : (
           <div className="p-8 text-center">
