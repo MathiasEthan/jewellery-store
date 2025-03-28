@@ -3,6 +3,7 @@ import { defineQuery } from 'next-sanity'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import AddToCartButton from '@/app/components/AddToCartButton'
 
 // Product type definition
 type Product = {
@@ -10,6 +11,7 @@ type Product = {
   description: string
   price: number
   imageUrl: string
+  id: string
 }
 
 export default async function ProductCategoriesPage({
@@ -40,7 +42,7 @@ export default async function ProductCategoriesPage({
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
-            <div key={index} className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div key={index} className="bg-[#030D24] rounded-lg overflow-hidden shadow-lg">
               {product.imageUrl && (
                 <div className="h-64 relative">
                   <Image 
@@ -52,12 +54,17 @@ export default async function ProductCategoriesPage({
                 </div>
               )}
               <div className="p-4">
-                <h2 className="text-xl font-semibold">{product.name}</h2>
-                <p className="text-gray-700 mt-2 line-clamp-2">{product.description}</p>
-                <p className="text-lg font-bold text-green-700 mt-2">${product.price.toFixed(2)}</p>
-                <Link href={`/products/items/${product.id}`} className="mt-3 inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-                  View Details
-                </Link>
+                <h2 className="text-xl font-semibold text-white">{product.name}</h2>
+                <p className="text-gray-300 mt-2 line-clamp-2">{product.description}</p>
+                <p className="text-lg font-bold text-white mt-2">${product.price.toFixed(2)}</p>
+                <div className="space-y-2 mt-4">
+                  <Link href={`/products/items/${product.id}`} className="block">
+                    <button className="w-full bg-blue-900 hover:bg-blue-800 text-white py-2 px-4 rounded transition-colors duration-200">
+                      View Details
+                    </button>
+                  </Link>
+                  <AddToCartButton productId={product.id} />
+                </div>
               </div>
             </div>
           ))}

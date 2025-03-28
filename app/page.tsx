@@ -1,6 +1,6 @@
-
 import Img_Carousel from "@/components/Img_Carousel";
 import AllProducts from "./products/page";
+import Chatbot from "./components/Chatbot";
 
 export default async function Home() {
 
@@ -8,8 +8,7 @@ export default async function Home() {
     <>
       <Img_Carousel />
       <AllProducts />
-      
-
+      <Chatbot />
     </>
   );
 }
